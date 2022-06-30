@@ -4,16 +4,7 @@ const cors = require("cors");
 const mongoose = require("mongoose")
 require('dotenv').config();
 
-const { DB_HOST } = process.env;
-
-mongoose.connect(DB_HOST)
-.then(() => { console.log("database connect success") })
-  .catch(error => { 
-  console.log(error.message);
-  process.exit(1);
-})
-
-const productsRouter = require("./routes/api/products");
+const productsRouter = require("./routes/api/products/products");
 const basketRouter = require("./routes/api/basket/basket");
 
 const app = express();
@@ -24,8 +15,7 @@ app.use(logger(formatsLogger));
 app.use(cors());
 app.use(express.json());
 
-
-app.use("/api/shoppingcards", productsRouter);
+app.use("/api/products", productsRouter);
 app.use("/api/basket", basketRouter);
 
 app.use((req, res) => {

@@ -2,24 +2,10 @@ const express = require("express");
 const createError = require("http-errors");
 const Joi = require("joi");
 
-const productOperations = require("../../../models")
+const { Order } = require("../../../models");
+const {joiSchema} = require("../../../models/order")
 
 const router = express.Router();
-
-const good = Joi.object().keys({
-    idGood: Joi.string(),
-    quantity: Joi.string(),
-});
-
-const joiSchema = Joi.object({
-    name: Joi.string().required(),
-    email: Joi.string().required(),   
-    phone: Joi.string().min(10).required(),
-    address: Joi.string().required(),
-    order: Joi.array().items(good),
-    totalPrice: Joi.string()
-});
-
 
 router.post("/", async (req, res, next) => { 
     try {
@@ -28,27 +14,15 @@ router.post("/", async (req, res, next) => {
             error.status = 400;
             throw error;
         }
-        const newOrder = await productOperations.addToBasket(req.body);
+        const newOrder = await Order.create(req.body);
        res.status(201).json(newOrder);
     } catch (error) {
+        if (error.message.includes("validation failed")) { 
+            error.status = 400;
+        }
        next(error)
 
     }
-  
 })
 
 module.exports = router;
-
-// [
-//   {
-//     "id": "1",
-//     "name": "Salad",
-//     "email": "1500",
-//     "phone": "ATB",
-//     "address":"ATB",
-//     "order": [{
-//         "idGood": "1500",
-//         "guantity": "ATB"
-//         }],
-//     "totalPrice":"10"
-//   }]
