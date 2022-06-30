@@ -1,0 +1,23 @@
+# dependencies
+/node_modules
+
+# production
+/build
+
+.idea/*
+
+# Visual Studio Code
+.history/
+.vscode/*
+.vscode-test
+*.code-workspace
+
+# Optional npm cache directory
+.npm
+
+# dotenv environment variables file
+.env
+.env.development
+.env.local
+.env.production
+.env.test

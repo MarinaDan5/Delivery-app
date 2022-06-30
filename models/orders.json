@@ -1,0 +1,16 @@
+[
+  {
+    "name": "Salad",
+    "email": "1500",
+    "phone": "1234566352",
+    "address": "ATB",
+    "order": [
+      {
+        "idGood": "1500",
+        "quantity": "ATB"
+      }
+    ],
+    "totalPrice": "10",
+    "_id": "2f962b02-b467-4c6d-a672-65e1eedda78f"
+  }
+]
