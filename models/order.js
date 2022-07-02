@@ -20,8 +20,8 @@ const ordersSchema = Schema({
   },
 order: [
       {
-        idGood: Number,
-        quantity: String
+        idGood: String,
+        quantity: Number
       }
     ],
     totalPrice: Number
