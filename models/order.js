@@ -19,9 +19,10 @@ const ordersSchema = Schema({
     required: true
   },
 order: [
-      {
+  {
+        _id: false,
         idGood: String,
-        quantity: Number
+        quantity: Number        
       }
     ],
     totalPrice: Number
