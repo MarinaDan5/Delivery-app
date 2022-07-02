@@ -32,11 +32,11 @@ router.get("/", async (req, res, next) => {
 //     }
 // })
 
-router.get("/:market", async (req, res, next) => {
-    const { market } = req.params;
+router.get("/:marketId", async (req, res, next) => {
+    const { marketId } = req.params;
     
     try {
-        const product = await Product.find({market: market});
+        const product = await Product.find({market: marketId});
         if (!product) {
             throw new createError(404, "Not found");
         }
