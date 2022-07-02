@@ -6,6 +6,7 @@ require('dotenv').config();
 
 const productsRouter = require("./routes/api/products/products");
 const basketRouter = require("./routes/api/basket/basket");
+const shopRoutes = require('./routes/api/shops/shops')
 
 const app = express();
 
@@ -17,6 +18,7 @@ app.use(express.json());
 
 app.use("/api/products", productsRouter);
 app.use("/api/basket", basketRouter);
+app.use("/api/shops", shopRoutes);
 
 app.use((req, res) => {
   res.status(404).json({ message: "Not found" });

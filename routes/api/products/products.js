@@ -6,7 +6,7 @@ const { Product } = require("../../../models")
 const router = express.Router();
 
 router.get("/", async (req, res, next) => { 
-    try {
+  try {
         const products = await Product.find()
         res.json(products)
     } catch (error) {
