@@ -20,17 +20,23 @@ const ordersSchema = Schema({
   },
 order: [
   {
-        _id: false,
-        idGood: String,
-        quantity: Number        
+      market: String,
+      name: String,
+      price: Number,
+      quantity: Number,
+      _id: false,
+      id: String
       }
     ],
     totalPrice: Number
 }, {versionKey: false, timestamps: true});
 
 const good = Joi.object().keys({
-    idGood: Joi.string(),
+    market: Joi.string(),
+    name: Joi.string(),
+    price: Joi.string(),
     quantity: Joi.string(),
+    id: Joi.string()
 });
 
 const joiSchema = Joi.object({
